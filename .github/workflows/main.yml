@@ -25,10 +25,10 @@ jobs:
         with:
           args: zip -r build.zip ./dist/apps/rl-app
       # UNCOMMENT AND CHANGE ENV BELOW TO  RETARGET ON A FRESH FORK
-      # - uses: josephbmanley/butler-publish-itchio-action@master
-      #   env:
-      #     BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_BUTLER_TOKEN }}
-      #     CHANNEL: web
-      #     ITCH_GAME: prism
-      #     ITCH_USER: radmangames
-      #     PACKAGE: build.zip
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_BUTLER_TOKEN }}
+          CHANNEL: web
+          ITCH_GAME: 7drl-2022-dummy
+          ITCH_USER: radmangames
+          PACKAGE: build.zip
