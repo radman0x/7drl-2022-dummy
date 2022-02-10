@@ -1,0 +1,28 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2019", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rad/rl-ui": ["libs/rl-ui/src/index.ts"],
+      "@rad/rad-pixi": ["libs/rad-pixi/src/index.ts"],
+      "@rad/rl-ecs": ["libs/rl-ecs/src/index.ts"],
+      "@rad/rl-utils": ["libs/rl-utils/src/index.ts"],
+      "@rad/rl-applib": ["libs/rl-applib/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

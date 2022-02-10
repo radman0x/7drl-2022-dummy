@@ -1,0 +1,288 @@
+{
+  "version": 1,
+  "projects": {
+    "rl-ui": {
+      "projectType": "library",
+      "root": "libs/rl-ui",
+      "sourceRoot": "libs/rl-ui/src",
+      "prefix": "rad",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rl-ui/tsconfig.lib.json",
+              "libs/rl-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/rl-ui/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/rl-ui/jest.config.js"
+          },
+          "outputs": [
+            "coverage/libs/rl-ui"
+          ]
+        }
+      },
+      "schematics": {}
+    },
+    "rad-pixi": {
+      "root": "libs/rad-pixi",
+      "sourceRoot": "libs/rad-pixi/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rad-pixi/tsconfig.lib.json",
+              "libs/rad-pixi/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/rad-pixi/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/rad-pixi/jest.config.js"
+          },
+          "outputs": [
+            "coverage/libs/rad-pixi"
+          ]
+        }
+      }
+    },
+    "rl-ecs": {
+      "root": "libs/rl-ecs",
+      "sourceRoot": "libs/rl-ecs/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/rl-ecs/tsconfig.lib.json",
+              "libs/rl-ecs/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/rl-ecs/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/rl-ecs/jest.config.js"
+          },
+          "outputs": [
+            "coverage/libs/rl-ecs"
+          ]
+        }
+      }
+    },
+    "rl-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "apps/rl-app/src",
+      "prefix": "rad",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/rl-app",
+            "index": "apps/rl-app/src/index.html",
+            "main": "apps/rl-app/src/main.ts",
+            "polyfills": "apps/rl-app/src/polyfills.ts",
+            "tsConfig": "apps/rl-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/rl-app/src/favicon.ico",
+              "apps/rl-app/src/assets"
+            ],
+            "styles": [
+              "apps/rl-app/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-dark/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rl-app/src/environments/environment.ts",
+                  "with": "apps/rl-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rl-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rl-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rl-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rl-app/tsconfig.app.json",
+              "apps/rl-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/rl-app/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/rl-app/jest.config.js"
+          },
+          "outputs": [
+            "coverage/"
+          ]
+        }
+      }
+    },
+    "rl-app-e2e": {
+      "root": "apps/rl-app-e2e",
+      "sourceRoot": "apps/rl-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rl-app-e2e/cypress.json",
+            "tsConfig": "apps/rl-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "rl-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rl-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/rl-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/rl-app-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "rl-ui"
+}

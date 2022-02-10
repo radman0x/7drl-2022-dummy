@@ -1,0 +1,34 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  something:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test3
+        shell: bash
+        run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive --depth=1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+      - run: npm install
+      - run: npm run build:prod
+      - uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -r build.zip ./dist/apps/rl-app
+      # UNCOMMENT AND CHANGE ENV BELOW TO  RETARGET ON A FRESH FORK
+      # - uses: josephbmanley/butler-publish-itchio-action@master
+      #   env:
+      #     BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_BUTLER_TOKEN }}
+      #     CHANNEL: web
+      #     ITCH_GAME: prism
+      #     ITCH_USER: radmangames
+      #     PACKAGE: build.zip

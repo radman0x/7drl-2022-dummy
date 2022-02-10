@@ -1,0 +1,22 @@
+{"frames": {
+
+"Elemental0-11.png":
+{
+	"frame": {"x":0,"y":0,"w":16,"h":16},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":16},
+	"sourceSize": {"w":16,"h":16}
+}},
+"animations": {
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "dawnlike-sheet.png",
+	"format": "RGBA8888",
+	"size": {"w":16,"h":16},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:02b66f9c34113e837f47a6b47cbd7e42:f9896b15d0f38037b1a6f8865be250dc:dfc4f76f3bfaa47642a39408e698fcea$"
+}
+}

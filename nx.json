@@ -1,0 +1,32 @@
+{
+  "npmScope": "rad",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*",
+    ".eslintrc.json": "*"
+  },
+  "projects": {
+    "rl-ui": {
+      "tags": []
+    },
+    "rad-pixi": {
+      "tags": []
+    },
+    "rl-ecs": {
+      "tags": []
+    },
+    "rl-app": {
+      "tags": []
+    },
+    "rl-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["rl-app"]
+    }
+  }
+}
