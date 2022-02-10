@@ -24,7 +24,7 @@ jobs:
       - uses: montudor/action-zip@v0.1.0
         with:
           args: zip -r build.zip ./dist/apps/rl-app
-      # UNCOMMENT AND CHANGE ENV BELOW TO  RETARGET ON A FRESH FORK
+      # UNCOMMENT AND CHANGE ENV BELOW TO  RETARGET ON A FRESH FORK,
       - uses: josephbmanley/butler-publish-itchio-action@master
         env:
           BUTLER_CREDENTIALS: ${{ secrets.ITCHIO_BUTLER_TOKEN }}
